@@ -10,11 +10,11 @@ Installation
 
 Clone this repository to your local machine:
 ```
-git clone https://github.com/your-username/simple-neural-network-pytorch.git
+git clone https://github.com/const-antin/ms-git.git
 ```
 Navigate to the project directory:
 ```
-cd simple-neural-network-pytorch
+cd ms-git
 ```
 
 Install the required packages using pip:
