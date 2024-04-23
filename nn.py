@@ -3,21 +3,26 @@ import torch.nn as nn
 import torch.nn.functional as F
 
 class SimpleNN(nn.Module):
-    def __init__(self, input_size, hidden_size, output_size):
+    def __init__(self, input_size, hidden_sizes, output_size):
         super(SimpleNN, self).__init__()
-        self.fc1 = nn.Linear(input_size, hidden_size)
-        self.fc2 = nn.Linear(hidden_size, output_size)
+        self.fc = []
+
+        sizes = [input_size] + hidden_sizes + [output_size]
+
+        for in_size, out_size in zip(sizes[0:], sizes[1:]):
+            self.fc.append(nn.Linear(in_size, out_size))
         
     def forward(self, x):
-        x = F.relu(self.fc1(x))  # Applying ReLU activation function to the hidden layer
-        x = self.fc2(x)          # Output layer (no activation function for regression tasks)
+        for fc in self.fc[:-1]:
+            x = F.relu(fc(x))       # All inner layers have an activation
+        x = self.fc[-1](x)          # Output layer (no activation function for regression tasks)
         return x
 
 # Example usage:
 input_size = 10
-hidden_size = 20
+hidden_sizes = [20, 40, 50]
 output_size = 1  # For simplicity, assuming a single output node for regression task
-model = SimpleNN(input_size, hidden_size, output_size)
+model = SimpleNN(input_size, hidden_sizes, output_size)
 
 # Generating random input tensor for demonstration
 input_tensor = torch.randn(32, input_size)  # batch_size=32
