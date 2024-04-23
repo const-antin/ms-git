@@ -28,7 +28,7 @@ Open the simple_nn.py file in your preferred editor.
 Modify the input_size, hidden_size, and output_size variables in the SimpleNN class constructor according to your requirements.
 Run the script:
 ```
-python simple_nn.py
+python nn.py
 ```
 ## License
 
