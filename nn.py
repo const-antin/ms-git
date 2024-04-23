@@ -3,14 +3,16 @@ import torch.nn as nn
 import torch.nn.functional as F
 
 class SimpleNN(nn.Module):
-    def __init__(self, input_size, hidden_size, output_size):
+    def __init__(self, input_size, hidden_size, hidden_size_2, output_size):
         super(SimpleNN, self).__init__()
         self.fc1 = nn.Linear(input_size, hidden_size)
-        self.fc2 = nn.Linear(hidden_size, output_size)
+        self.fc2 = nn.Linear(hidden_size, hidden_size_2)
+        self.fc3 = nn.Linear(hidden_size_2, output_size)
         
     def forward(self, x):
         x = F.relu(self.fc1(x))  # Applying ReLU activation function to the hidden layer
-        x = self.fc2(x)          # Output layer (no activation function for regression tasks)
+        x = F.relu(self.fc2(x))  # Applying second hidden layer
+        x = self.fc3(x)          # Output layer (no activation function for regression tasks)
         return x
 
 # Example usage:
