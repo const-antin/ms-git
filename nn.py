@@ -18,8 +18,9 @@ class SimpleNN(nn.Module):
 # Example usage:
 input_size = 10
 hidden_size = 20
+hidden_size_2 = 30
 output_size = 1  # For simplicity, assuming a single output node for regression task
-model = SimpleNN(input_size, hidden_size, output_size)
+model = SimpleNN(input_size, hidden_size, hidden_size_2, output_size)
 
 # Generating random input tensor for demonstration
 input_tensor = torch.randn(32, input_size)  # batch_size=32
