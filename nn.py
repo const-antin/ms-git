@@ -19,7 +19,7 @@ class SimpleNN(nn.Module):
         return x
 
 # Example usage:
-input_size = 10
+input_size = 15
 hidden_sizes = [20, 40, 50]
 output_size = 1  # For simplicity, assuming a single output node for regression task
 model = SimpleNN(input_size, hidden_sizes, output_size)
