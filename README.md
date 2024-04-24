@@ -10,7 +10,7 @@ Installation
 
 Clone this repository to your local machine:
 ```
-git clone https://github.com/const-antin/ms-git.git
+git clone git@github.com:const-antin/ms-git.git
 ```
 Navigate to the project directory:
 ```
